@@ -15,7 +15,7 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'home',
     component: () => import("../views/demo/index.vue"),
-    redirect: "/core/chart"
+    redirect: "/editor/data_source"
   },
   {
     path: "/core",
@@ -60,9 +60,39 @@ const routes: Array<RouteConfig> = [
     ],
   },
   {
-    path: "/editor/:id",
+    path: "/editor",
     name: "editor",
-    component: () => import("../views/editor/index.vue"),
+    component: () => import("../views/editor/data_model.vue"),
+    children:[
+      {
+        path: "data_source",
+        component: () => import("../views/editor/data_source.vue"),
+        meta: {
+          title: "数据源",
+        },
+      },
+      {
+        path: "data_model",
+        component: () => import("../views/editor/data_model.vue"),
+        meta: {
+          title: "数据模型",
+        },
+      },
+      {
+        path: "data_calculate",
+        component: () => import("../views/editor/data_calculate.vue"),
+        meta: {
+          title: "计算模型",
+        },
+      },
+      {
+        path: "app_model",
+        component: () => import("../views/editor/app_model.vue"),
+        meta: {
+          title: "应用模型",
+        },
+      }
+    ]
   },
 ]
 

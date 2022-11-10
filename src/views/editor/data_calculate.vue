@@ -1,43 +1,32 @@
 <template>
-    <!-- <div class="box-editor-container" @contextmenu.prevent.stop="">
+    <div class="box-editor-container" @contextmenu.prevent.stop="">
         <el-container style="height: calc(100vh)">
             <el-header height="50px" style="padding:0">
-                <box-top :option="{ 'title': 'H5微场景系统' }"></box-top>
+                <el-menu :default-active="thatOption.activeIndex" mode="horizontal">
+                    <el-menu-item index="1">数据源</el-menu-item>
+                    <el-menu-item index="2">数据模型</el-menu-item>
+                    <el-menu-item index="3">计算模型</el-menu-item>
+                    <el-menu-item index="4">应用模型</el-menu-item>
+                </el-menu>
             </el-header>
             <el-container style="height: calc(100vh)">
                 <el-main style="padding:0">
-                    <splitpanes class="default-theme">
-                        <pane :size="20" :minSize="10" :maxSize="50">
-                            <box-editor-toolbox></box-editor-toolbox>
-                        </pane>
-                        <pane>
-                            <box-editor-page-drag></box-editor-page-drag>
-                        </pane>
-                        <pane :size="20" :minSize="10" :maxSize="50">
-                            <box-editor-property-layout-drag></box-editor-property-layout-drag>
-                        </pane>
-                    </splitpanes>
+
                 </el-main>
             </el-container>
         </el-container>
-    </div> -->
-    <box-editor-toolbox></box-editor-toolbox>
+    </div>
 </template>
 <script lang="ts" setup>
-
-// import BoxTop from "@/components/editor/layout/top.vue";
-// import Splitpanes from "@/components/editor/layout/splitpanes/splitpanes.vue";
-// import Pane from "@/components/editor/layout/splitpanes/pane.vue";
-// import "splitpanes/dist/splitpanes.css";
-// import cc from './components'
-// import {componentStore} from "@/components/editor/hook/componentStore"
-
+import cc from './components'
+import { componentStore } from "@lauxinyi/box-editor"
 const root = getCurrentInstance();
 const that = root.proxy;
-
 const project = that["$project"] as any;
-// const component = componentStore();
-// component.load(cc)
+
+const thatOption = reactive({
+    activeIndex: "1"
+})
 
 </script>
 <style lang="scss" scoped>

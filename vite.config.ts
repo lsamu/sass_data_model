@@ -14,7 +14,7 @@ export default defineConfig({
   base: "./",
   build: {
     emptyOutDir: false,
-    chunkSizeWarningLimit: 1024 * 5,
+    chunkSizeWarningLimit: 1024 * 1,
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
       //external: ["vue", "vue-router","vuex","@vue/composition-api", "element-ui", "echart"],
@@ -23,6 +23,12 @@ export default defineConfig({
         globals: {
           vue: "Vue",
         },
+        // 最小化拆分包
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+          }
+        }
       },
     },
   },

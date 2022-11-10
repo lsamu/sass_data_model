@@ -13,20 +13,13 @@
     </el-container>
   </el-container>
 </template>
-<script lang="ts">
-import NavMenu from "./nav.vue";
-import PageHeader from "./header.vue";
+<script lang="ts" setup>
+import NavMenu from "./layout-nav.vue";
+import PageHeader from "./layout-header.vue";
 
-export default defineComponent({
-  components: {
-    NavMenu,
-    PageHeader,
-  },
-  setup(props, context) {
-    const root = getCurrentInstance();
-    const that: any = root.proxy;
-  },
-});
+const root = getCurrentInstance();
+const that: any = root.proxy;
+
 </script>
 
 <style lang="scss" scoped>

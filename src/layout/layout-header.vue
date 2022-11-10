@@ -14,26 +14,22 @@
     </el-dropdown>
   </div>
 </template>
-<script lang="ts">
-export default defineComponent({
-  setup(props, context) {
-    const root = getCurrentInstance();
-    const that:any = root.proxy;
+<script lang="ts" setup>
 
-    const title = computed(() => {
-      return that.$route.meta.title;
-    });
+const root = getCurrentInstance();
+const that: any = root.proxy;
 
-    const handleLogout = function () {
-      that.$router.push({ path: "/" });
-    };
+const router = that.$router
+const route = that.$route
 
-    return {
-      title,
-      handleLogout,
-    };
-  },
+const title = computed(() => {
+  return that.$route.meta.title;
 });
+
+const handleLogout = function () {
+  router.push({ path: "/" });
+};
+
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +59,7 @@ export default defineComponent({
     height: 32px;
     background: #ccc;
     border-radius: 50%;
-    background-image: url("../../assets/img/profile.jpg");
+    background-image: url("/src/assets/img/profile.jpg");
     background-size: 32px;
   }
 }
