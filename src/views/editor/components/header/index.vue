@@ -1,13 +1,24 @@
 <template>
-    <el-menu :default-active="thatOption.activeIndex" mode="horizontal">
-        <el-menu-item index="1">数据源</el-menu-item>
-        <el-menu-item index="2">数据模型</el-menu-item>
-        <el-menu-item index="3">计算模型</el-menu-item>
-        <el-menu-item index="4">应用模型</el-menu-item>
-    </el-menu>
+    <div>
+        <el-menu :default-active="route.path" mode="horizontal" router>
+            <el-menu-item index="/editor/data_source">数据源</el-menu-item>
+            <el-menu-item index="/editor/data_model">数据模型</el-menu-item>
+            <el-menu-item index="/editor/data_calculate">计算模型</el-menu-item>
+            <el-menu-item index="/editor/app_model">应用模型</el-menu-item>
+        </el-menu>
+    </div>
 </template>
 <script lang="ts" setup>
+const root = getCurrentInstance()
+const that = root.proxy
+const route = that.$route
+const router = that.$router
+
 const thatOption = reactive({
-    activeIndex: "1"
+
+})
+
+watchEffect(() => {
+
 })
 </script>

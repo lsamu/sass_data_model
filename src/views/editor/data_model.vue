@@ -2,12 +2,7 @@
     <div class="box-editor-container" @contextmenu.prevent.stop="">
         <el-container style="height: calc(100vh)">
             <el-header height="50px" style="padding:0">
-                <el-menu :default-active="thatOption.activeIndex" mode="horizontal">
-                    <el-menu-item index="1">数据源</el-menu-item>
-                    <el-menu-item index="2">数据模型</el-menu-item>
-                    <el-menu-item index="3">计算模型</el-menu-item>
-                    <el-menu-item index="4">应用模型</el-menu-item>
-                </el-menu>
+                <BHeader></BHeader>
             </el-header>
             <el-container style="height: calc(100vh)">
                 <el-main style="padding:0">
@@ -18,6 +13,7 @@
     </div>
 </template>
 <script lang="ts" setup>
+import BHeader from "./components/header/index.vue"
 import cc from './components'
 import { componentStore } from "@lauxinyi/box-editor"
 const root = getCurrentInstance();

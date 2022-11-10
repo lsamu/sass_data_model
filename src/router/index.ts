@@ -63,7 +63,7 @@ const routes: Array<RouteConfig> = [
     path: "/editor",
     name: "editor",
     component: () => import("../views/editor/data_model.vue"),
-    children:[
+    children: [
       {
         path: "data_source",
         component: () => import("../views/editor/data_source.vue"),
