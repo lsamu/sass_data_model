@@ -1,28 +1,23 @@
 <template>
     <div class="box-editor-container" @contextmenu.prevent.stop="">
         <el-container style="height: calc(100vh)">
-            <el-header height="50px" style="padding:0">
-                <BHeader></BHeader>
+            <el-header height="60px" style="padding:0">
+                <el-menu :default-active="route.path" mode="horizontal" router>
+                    <el-menu-item index="/editor/data_source">数据源</el-menu-item>
+                    <el-menu-item index="/editor/data_model">数据模型</el-menu-item>
+                    <!-- <el-menu-item index="/editor/data_calculate">计算模型</el-menu-item> -->
+                    <el-menu-item index="/editor/app_model">应用模型</el-menu-item>
+                </el-menu>
             </el-header>
-            <el-container style="height: calc(100vh)">
-                <el-main style="padding:0">
-
-                </el-main>
-            </el-container>
+            <router-view></router-view>
         </el-container>
     </div>
 </template>
 <script lang="ts" setup>
-import BHeader from "./components/header/index.vue"
-import cc from './components'
-import { componentStore } from "@lauxinyi/box-editor"
-const root = getCurrentInstance();
-const that = root.proxy;
-const project = that["$project"] as any;
-
-const thatOption = reactive({
-    activeIndex: "data_source"
-})
+const root = getCurrentInstance()
+const that = root.proxy
+const route = that.$route
+const router = that.$router
 
 </script>
 <style lang="scss" scoped>

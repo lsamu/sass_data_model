@@ -1,33 +1,42 @@
 <template>
-    <div class="box-editor-container" @contextmenu.prevent.stop="">234
-        <el-container style="height: calc(100vh)">
-            <el-header height="50px" style="padding:0">
-                <BHeader></BHeader>
-            </el-header>
-            <el-container style="height: calc(100vh)">
-                <el-aside width="200px">
-                    <el-tree :data="treeOption.data" :props="treeOption.defaultProps"></el-tree>
-                </el-aside>
-                <el-main style="padding:0">
-                    3242
-                </el-main>
-            </el-container>
-        </el-container>
-    </div>
+    <el-container style="height: calc(100vh)">
+        <el-aside width="320px">
+            <div class="box-tree__filter" v-if="treeOption.filter" ref="refFilter">
+                <el-input :placeholder="treeOption.filterText" v-model="treeOption.filterValue"
+                    prefix-icon="el-icon-search">
+                    <template slot="append">
+                        <el-tooltip class="item" effect="dark" content="添加一级" placement="top" slot="acurrentPropsend"
+                            :disabled="false" v-if="treeOption.edit.visible">
+                            <el-button @click="handleRootNodeCreate" icon="el-icon-plus" v-if="treeOption.addBtn">
+                            </el-button>
+                        </el-tooltip>
+                    </template>
+                </el-input>
+            </div>
+            <el-tree :data="treeOption.data" :props="treeOption.defaultProps"></el-tree>
+        </el-aside>
+        <el-main style="padding:0">
+            <BDataSource></BDataSource>
+        </el-main>
+    </el-container>
 </template>
 <script lang="ts" setup>
-import BHeader from "./components/header/index.vue"
-import cc from './components'
-import { componentStore } from "@lauxinyi/box-editor"
+import BDataSource from "./data_source/index.vue"
 const root = getCurrentInstance();
 const that = root.proxy;
-const project = that["$project"] as any;
 
 const thatOption = reactive({
-    activeIndex: "1"
+
 })
 
 const treeOption = reactive({
+    filter:true,
+    filterText:"",
+    filterValue:"",
+    edit:{
+        visible:true
+    },
+    addBtn:true,
     data: [{
         label: '一级 1',
         children: [{
@@ -69,53 +78,11 @@ const treeOption = reactive({
     }
 })
 
+const handleRootNodeCreate = ()=>{
+
+}
+
 </script>
 <style lang="scss" scoped>
-.box-editor-container {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
 
-    .topbar-view {
-        position: absolute;
-        height: 60px;
-        width: 100vw;
-        z-index: 1000;
-    }
-
-    .toolbar-view {
-        position: absolute;
-        top: 60px;
-        width: 300px;
-        bottom: 0;
-        z-index: 1000;
-    }
-
-    .config-view {
-        position: absolute;
-        right: 0;
-        top: 60px;
-        width: 300px;
-        bottom: 0;
-        z-index: 1000;
-    }
-
-    .scale-view {
-        position: absolute;
-        right: 316px;
-        bottom: 16px;
-        z-index: 1000;
-
-        &.preview {
-            right: 40px;
-        }
-    }
-
-    .main-view {
-        background: #eeeeee;
-        padding: 60px 300px 0 300px;
-        overflow: hidden;
-        height: calc(100vh);
-    }
-}
 </style>

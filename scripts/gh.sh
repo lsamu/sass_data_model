@@ -20,6 +20,6 @@ git commit -m "master"
 
 #git push -f https://github.com/lsamu/sass_data_app.git gh-pages
 
-git remote add origin https://github.com/lsamu/sass_data_screen.git
+git remote add origin https://github.com/lsamu/sass_data_model.git
 
 git push -f origin gh-pages

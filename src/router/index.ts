@@ -62,7 +62,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/editor",
     name: "editor",
-    component: () => import("../views/editor/data_model.vue"),
+    component: () => import("../views/editor/layout.vue"),
     children: [
       {
         path: "data_source",
@@ -76,13 +76,6 @@ const routes: Array<RouteConfig> = [
         component: () => import("../views/editor/data_model.vue"),
         meta: {
           title: "数据模型",
-        },
-      },
-      {
-        path: "data_calculate",
-        component: () => import("../views/editor/data_calculate.vue"),
-        meta: {
-          title: "计算模型",
         },
       },
       {
