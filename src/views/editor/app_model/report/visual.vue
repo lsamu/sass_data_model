@@ -22,5 +22,8 @@ defineExpose({
 })
 </script>
 <style lang="scss">
-
+.luckysheet-cols-menu {
+  z-index: 9004;
+}
+.luckysheet-input-box {z-index:3000}
 </style>
